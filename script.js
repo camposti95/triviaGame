@@ -97,9 +97,6 @@ const questions = [
     },
 ]
 
-// const correctMessages = ["That's Correct!", "Well Done", "Nice Guess!"]
-// const incorrectMessages = ["Nope, Sorry", "Wrong Choice", "Aww that's wrong"]
-
 function shuffledCorrectMessages() {
     let randomMessage = questions[index].correctMessages[(Math.floor(Math.random() * questions[index].correctMessages.length))]
     return randomMessage.response
@@ -117,6 +114,7 @@ $(function() {
         $("#question-container").addClass("question-container-flex")
         $(".container").addClass("container-start")
         $(".controls").css("height", "20%")
+        $('#submit-btn').show()
         $("#next-btn").show()
         showQuestion(questions)
     })
@@ -139,23 +137,31 @@ function showQuestion(question) {
 }
 
 function clearStatus() {
-    $('#message').empty().removeClass('correct-answer incorrect-answer')
+    $('#message').empty()
+    $('.submit-btn').removeAttr('disabled')
     $('.answer-choice').removeAttr('disabled')
     $('#next-btn').attr('disabled','disabled')
 }
 
 $(function() {
-    $('.answer-choice').click(function( e ){
-        let answer = e.target
+    let answer
+    $('.answer-choice').focus(function( e ){
+        answer = e.target
+        console.log(answer)
+    })
+    $('.submit-btn').click(function(){
+        console.log(questions[index].correct)
         if(answer.innerText == questions[index].correct){
-            $('#message').text(shuffledCorrectMessages()).addClass('correct-answer')
+            $('#message').text(shuffledCorrectMessages()).css('color','#82CD47')
             score += 1
+            console.log(score)
         }else{
-            $('#message').text(shuffledIncorrectMessages()).addClass('incorrect-answer')
+            $('#message').text(shuffledIncorrectMessages()).css('color','#D61C4E')
         }
         $('.answer-choice').attr('disabled','disabled')
+        $('.submit-btn').attr('disabled','disabled')
         $('#next-btn').removeAttr('disabled')
-        count += 1
+        count ++
     })
 })
 
@@ -184,6 +190,7 @@ $(function() {
             
             $('.score-message').text(`Score: ${score}/5`)
             $('#message').hide()
+            $('.submit-btn').hide()
             $('.answer-choice').hide()
             $('#next-btn').text('Restart').addClass('restart-btn')
             $(function() {

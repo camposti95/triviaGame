@@ -95,6 +95,11 @@ main {
     font-size: 30px;
     font-weight: bold;
 }
+.answer-choice:focus {
+    background-color: #2f6b62;
+    text-shadow: 0 0 30px #63cfbf, 0 0 20px #a0f5e8;
+    color: #e0f8f5;
+}
 .btn:hover {
     background-color: #2f6b62;
     text-shadow: 0 0 30px #63cfbf, 0 0 20px #a0f5e8;
@@ -124,6 +129,10 @@ main {
     font-size: 50px;
     font-weight: bold;
 }
+.submit-btn, .next-btn {
+    padding: 2px 5px;
+    font-size: 30px;
+}
 .restart-btn {
     background-color: #ff4da6;
     border-color: #c03b7e;
@@ -138,6 +147,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 .hide {
     display: none;
@@ -193,7 +204,11 @@ main {
         font-size: 40px;
     }
     .next-btn {
-        padding: 2px 5px;
+        padding: 2px 1px;
+        font-size: 30px;
+    }
+    .submit-btn {
+        padding: 2px 2px;
         font-size: 30px;
     }
 }
