@@ -150,6 +150,14 @@ main {
     gap: 1rem;
     flex-wrap: wrap;
 }
+.icon {
+    grid-area: icon;
+    padding-left: 0.5rem;
+  }
+  .icon-map {
+    width: 50px;
+    height: 45px;
+  }
 .hide {
     display: none;
 }

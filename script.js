@@ -115,7 +115,6 @@ $(function() {
         $(".container").addClass("container-start")
         $(".controls").css("height", "20%")
         $('#submit-btn').show()
-        $("#next-btn").show()
         showQuestion(questions)
     })
 })
@@ -140,6 +139,7 @@ function clearStatus() {
     $('#message').empty()
     $('.submit-btn').removeAttr('disabled')
     $('.answer-choice').removeAttr('disabled')
+    $('#next-btn').hide()
     $('#next-btn').attr('disabled','disabled')
 }
 
@@ -150,17 +150,16 @@ $(function() {
         console.log(answer)
     })
     $('.submit-btn').click(function(){
-        console.log(questions[index].correct)
         if(answer.innerText == questions[index].correct){
             $('#message').text(shuffledCorrectMessages()).css('color','#82CD47')
             score += 1
-            console.log(score)
         }else{
             $('#message').text(shuffledIncorrectMessages()).css('color','#D61C4E')
         }
         $('.answer-choice').attr('disabled','disabled')
         $('.submit-btn').attr('disabled','disabled')
         $('#next-btn').removeAttr('disabled')
+        $('#next-btn').show()
         count ++
     })
 })
@@ -193,6 +192,7 @@ $(function() {
             $('.submit-btn').hide()
             $('.answer-choice').hide()
             $('#next-btn').text('Restart').addClass('restart-btn')
+            $('.icon').show()
             $(function() {
                 $('#next-btn').click(function (){
                     location.reload()
